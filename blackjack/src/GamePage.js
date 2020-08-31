@@ -6,6 +6,7 @@ import "./css/card_flip.css";
 import Card from "./Card";
 
 export default function NewAccount() {
+  console.log('Don\'t hack my shit')
   return (
     <div>
       <div className="start_page">

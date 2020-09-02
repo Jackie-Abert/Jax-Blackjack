@@ -23,10 +23,14 @@ function deckOfCards() {
       if (
         faceValue[j] === "J" ||
         faceValue[j] === "Q" ||
-        faceValue[j] === "K" ||
-        faceValue[j] === "A"
+        faceValue[j] === "K"
       ) {
         numValue = "10";
+      }
+      if (
+        faceValue[j] === "A"
+      ) {
+        numValue = "11";
       }
       let card = {
         key: key++,
@@ -37,7 +41,6 @@ function deckOfCards() {
       deck.push(card);
     }
   }
-  console.log(deck);
   for (let i = deck.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * i);
     const temp = deck[i];
@@ -45,6 +48,6 @@ function deckOfCards() {
     deck[j] = temp;
   }
   console.log(deck);
-  return deck;
 }
-deckOfCards();
+deckOfCards()
+

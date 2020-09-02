@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ValidationError from './ValidationError'
+
 import "./css/new_account.css";
 import "./css/start.css";
 
 export default class NewAccount extends Component {
+  
   state = {
     name: {
         value: "",

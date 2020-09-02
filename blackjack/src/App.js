@@ -5,7 +5,7 @@ import Login from "./Login";
 import NewAccount from "./NewAccount";
 import GamePage from "./GamePage";
 import WelcomeUser from "./WelcomeUser";
-import DeleteGame from './DeleteGame';
+import DeleteGame from "./DeleteGame";
 
 export default class App extends Component {
   render() {
@@ -18,13 +18,13 @@ export default class App extends Component {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path='/WelcomeUser'>
+          <Route path="/WelcomeUser">
             <WelcomeUser />
           </Route>
-          <Route path='/game'>
+          <Route path="/game">
             <GamePage />
           </Route>
-          <Route path='/delete'>
+          <Route path="/delete">
             <DeleteGame />
           </Route>
           <Route path="/">

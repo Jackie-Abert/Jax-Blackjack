@@ -4,10 +4,13 @@ import './css/start.css';
 import './css/welcome_user.css';
 import GameItem from './GameItem';
 
+
+
 export default class WelcomeUser extends Component {
+
   render() {
     return (
-      <div classNameName="welcome_user_page">
+      <div className="welcome_user_page">
         <header>
           <h1>BlackJack</h1>
         </header>

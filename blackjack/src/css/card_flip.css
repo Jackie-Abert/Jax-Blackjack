@@ -13,9 +13,9 @@
   transition: transform 0.8s;
   transform-style: preserve-3d;
 }
-.flip_card:hover .content {
+/* .flip_card:hover .content {
   transform: rotateY(180deg);
-}
+} */
 .front_of_card,
 .back_of_card {
   position: absolute;
@@ -25,7 +25,7 @@
 }
 
 .front_of_card {
-  background-image: url(../Images/card_back-01.png);
+  background-image: url(../Images/card_back.png);
   background-size: 100px 150px;
   border: 0.5px solid #bbbbbb;
   box-shadow: 1px 1px 2px #7a7a7a;
@@ -37,5 +37,5 @@
     border: 0.5px solid #bbbbbb;
     box-shadow: 1px 1px 2px #7a7a7a;
     border-radius: 8px;
-    transform: rotateY(180deg);
+    /* transform: rotateY(180deg); */
 }

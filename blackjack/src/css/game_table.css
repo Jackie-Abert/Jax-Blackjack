@@ -1,59 +1,61 @@
-h2{
-    margin:auto;  
+h2 {
+  margin: auto;
 }
 .game_page_header {
-    display: flex;
-    text-align: center;
-    justify-content: space-between;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
 }
-.flex_footer{
-    margin: 20px;
+.flex_footer {
+  margin: 20px;
 }
-.menu_button, .game_rules{
-    width: 50px;
-    height: 25px;
-    margin: 10px;   
+.menu_button,
+.game_rules {
+  width: 50px;
+  height: 25px;
+  margin: 10px;
 }
 
-.bet_pot_container{
-    display: flex;
-    flex-direction: row;
+.bet_pot_container {
+  display: flex;
+  flex-direction: row;
 }
-.test_flex_container{
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    margin: 10px; 
+.test_flex_container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
 }
 .bank {
-    flex: 1;
-    display: flex;
-    margin: 10px 10px 10px 30px; 
+  flex: 1;
+  display: flex;
+  margin: 10px 10px 10px 30px;
 }
-.play_buttons_span{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+.play_buttons_span {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
-.bet_select{
-    width: 50px;
-    margin: 0 20px;
+.bet_select {
+  width: 50px;
+  margin: 0 20px;
 }
-.start_button, .stay_button{
-    width: 100px;
-    height: 25px;
-    margin: auto;
+.start_button,
+.stay_button {
+  width: 100px;
+  height: 25px;
+  margin: auto;
 }
 
-.card{
-    width:100px;
-    height: 150px;
-    border: .5px solid #bbbbbb;
-    box-shadow: 1px 1px 2px #7a7a7a;
-    background-image: url(../Images/card_back-01.png);
-    background-size: contain;
-    margin: 10px;
-    border-radius: 6px;
+.card {
+  width: 100px;
+  height: 150px;
+  border: 0.5px solid #bbbbbb;
+  box-shadow: 1px 1px 2px #7a7a7a;
+  background-image: url(../Images/card_back.png);
+  background-size: contain;
+  margin: 10px;
+  border-radius: 6px;
 }
 
 /* .front_of_card {
@@ -66,28 +68,57 @@ h2{
     border-radius: 6px;
 } */
 
-.game_table{
-    display: flex;
-    flex-direction: column;
+.game_table {
+  display: flex;
+  flex-direction: column;
+  min-height: 440px;
 }
 
-.dealer_cards{
-    display:flex;
-    margin: auto;
+.dealer_cards {
+  display: flex;
+  margin: auto;
 }
-.player_cards{
-    display: flex;
-    margin: auto;
-}
-
-.hit_button{
-    width: 100px;
-    height: 25px;
-    margin: auto;
+.player_cards {
+  display: flex;
+  margin: auto;
 }
 
-.new_deal_button{
-    width: 100px;
-    height: 25px;
-    margin: auto;
+.hit_button {
+  width: 100px;
+  height: 25px;
+  margin: auto;
+}
+
+.new_deal_button {
+  width: 100px;
+  height: 25px;
+  margin: auto;
+}
+
+.card_face img {
+  height: 25px;
+  width: 25px;
+  margin: 12px;
+}
+.card_face {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 100px;
+  height: 150px;
+}
+.suit_top {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+}
+.face_value {
+  margin: 2px;
+  font-size: 2.5em;
+  flex: 1;
+}
+.suit_bottom {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
 }

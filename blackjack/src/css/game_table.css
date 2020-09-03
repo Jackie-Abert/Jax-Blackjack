@@ -122,3 +122,30 @@ h2 {
   display: flex;
   justify-content: space-around;
 }
+
+.hidden_endgame_message {
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 200px;
+  margin-top: -100px; /* Negative half of height. */
+  margin-left: -250px; /* Negative half of width. */
+  font-size: 80px;
+  font-weight: 700;
+  color: #000000;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
+    1px 1px 0 #fff;
+  position: fixed;
+  z-index: 10;
+}
+#hidden_endgame_button {
+  height: 60px;
+  width: 150px;
+  color:#fff;
+  background:#000000;
+  font-size: 23px;
+  margin: auto;
+}
+

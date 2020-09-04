@@ -5,6 +5,10 @@ import "./css/welcome_user.css";
 import GameItem from "./GameItem";
 
 export default class WelcomeUser extends Component {
+  
+  
+  
+  
   render() {
     return (
       <div className="welcome_user_page">

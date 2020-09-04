@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import TokenService from "./services/token-service";
 import AuthApiService from "./services/auth-api-service";
 import "./css/log_in.css";
@@ -7,25 +7,6 @@ import "./css/start.css";
 
 export default class Login extends Component {
   
-  static defaultProps = {
-    onLoginSuccess: () => {},
-  };
-
-  state = { error: null };
-
-  handleSubmitBasicAuth = (ev) => {
-    ev.preventDefault();
-    const { user_name, password } = ev.target;
-
-    console.log("login form submitted");
-    console.log({ user_name, password });
-    TokenService.saveAuthToken(
-      TokenService.makeBasicAuthToken(user_name.value, password.value)
-    );
-    user_name.value = "";
-    password.value = "";
-    this.props.onLoginSuccess();
-  };
   handleSubmitJwtAuth = (ev) => {
     ev.preventDefault();
     this.setState({ error: null });
@@ -39,7 +20,8 @@ export default class Login extends Component {
         user_name.value = "";
         password.value = "";
         TokenService.saveAuthToken(res.authToken);
-        this.props.onLoginSuccess();
+        console.log('Successful Login');
+        this.props.history.push('/WelcomeUser')
       })
       .catch((res) => {
         this.setState({ error: res.error });
@@ -47,11 +29,11 @@ export default class Login extends Component {
   };
   render() {
     return (
-      <div className="login_page" onSubmit={this.handleSubmitBasicAuth}>
+      <div className="login_page">
         <header>
           <h1>BlackJack</h1>
         </header>
-        <form className="login_page_form">
+        <form className="login_page_form" onSubmit={this.handleSubmitJwtAuth}>
           <label className="name">Name:</label>
           <input
             className="name"

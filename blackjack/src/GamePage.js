@@ -51,7 +51,7 @@ export default class GamePage extends Component {
     buttonHitDisabled: true,
     defaultValue: true,
     endMessage: "",
-    ishidden: "hidden",
+    ishidden: 'hidden',
     hiddenRules: "hiddenRules",
     hiddenMenu: "hiddenMenu",
     gameStarted: false,
@@ -62,6 +62,7 @@ export default class GamePage extends Component {
 
   handleStartGame = () => {
     let newDeck = []; 
+    let emptyCard = [{suit:"cardback", faceValue:'', numValue:0}]
     newDeck = DeckManager.deckOfCards();
     console.log(newDeck)
     
@@ -70,12 +71,13 @@ export default class GamePage extends Component {
       buttonStayDisabled: false,
       buttonHitDisabled: false,
       gameStarted: true,
+      dealerCountHidden:true
     });
     
     let newPlayerHand = [];
     let newDealerHand = [];
     newPlayerHand.push(newDeck.pop());
-    newDealerHand.push(newDeck.pop());
+    newDealerHand.push(emptyCard.pop());
     newPlayerHand.push(newDeck.pop());
     newDealerHand.push(newDeck.pop());
     this.setState(
@@ -105,7 +107,7 @@ export default class GamePage extends Component {
     });
     if (sumPlayerHand === 21 && sumDealerHand !== 21) {
       console.log("Blackjack");
-      let winnings = this.state.pot * 1.5 + this.state.pot + this.state.bank;
+      let winnings = Math.round(this.state.pot * 1.5 + this.state.pot) + this.state.bank;
       let newWin = this.state.wins + 1
       this.setState({
         buttonPlayDisabled: false,
@@ -113,7 +115,7 @@ export default class GamePage extends Component {
         buttonHitDisabled: true,
         endMessage: "Blackjack!",
         bank: winnings,
-        ishidden: "",
+        ishidden: null,
         wins:newWin
       });
       //pot is multiplied by 1.5 and returned to the bank
@@ -125,7 +127,7 @@ export default class GamePage extends Component {
         buttonStayDisabled: true,
         buttonHitDisabled: true,
         endMessage: "Dealer has Blackjack.",
-        ishidden: "",
+        ishidden: null,
         losses:newLoss
       });
     }
@@ -148,7 +150,7 @@ export default class GamePage extends Component {
         buttonStayDisabled: true,
         buttonHitDisabled: true,
         endMessage: "Bust! Dealer wins.",
-        ishidden: "",
+        ishidden: null,
         losses:newLoss
       });
     } else {
@@ -171,7 +173,7 @@ export default class GamePage extends Component {
         buttonHitDisabled: true,
         endMessage: "Bust! Player Wins.",
         bank: winnings,
-        ishidden: "",
+        ishidden: null,
         wins:newWin
       });
     } else {
@@ -213,6 +215,14 @@ export default class GamePage extends Component {
   //this function is supposed to be the ai after the player hits stay
   //it is supposed to loop through and deal cards untill player busts
   //or is >= 17, whatever comes first
+
+
+  // this is where the app breaks. when the player 
+  // stays and the dealer doesn't have to draw another 
+  // card, the end game message and button do not appear. 
+  // they only show up when the screen is resized 
+  //it's between this and "end game"
+
   handleDealer = () => {
     let dealerSum = this.check(this.state.dealerHand);
     let dealerHand = [...this.state.dealerHand];
@@ -224,7 +234,7 @@ export default class GamePage extends Component {
     }
     this.setState(
       {
-        dealerHand,
+        dealerHand
       },
       () => this.checkDealer(dealerHand)
     );
@@ -238,6 +248,7 @@ export default class GamePage extends Component {
         buttonStayDisabled: true,
         buttonHitDisabled: true,
         defaultValue: true,
+        dealerCountHidden:false
       },
       () => this.handleDealer()
     );
@@ -246,6 +257,10 @@ export default class GamePage extends Component {
   //add to bank
   //this renders a button to end the game
   //also throws up an end game message
+
+
+  ///////this is sometimes not letting message and button not render to the dom
+  /////// without resizing the window, why????????
   endGame = () => {
     let newendMessage = "";
     let winnings = this.state.bank;
@@ -260,15 +275,15 @@ export default class GamePage extends Component {
       newendMessage = "Dealer Wins";
       newLoss = this.state.losses + 1
     }
-    if (this.state.playerHandScore === this.state.dealerHandScore) {
+    else if (this.state.playerHandScore === this.state.dealerHandScore) {
       newendMessage = "Draw";
     }
-    this.setState({
-      endMessage: newendMessage,
-      ishidden: "",
+    return this.setState({
       bank: winnings,
       wins:newWin,
-      losses:newLoss
+      losses:newLoss,
+      endMessage: newendMessage,
+      ishidden: null,
     });
   };
   //this is the button that clears the board and resets the state
@@ -391,6 +406,7 @@ export default class GamePage extends Component {
               </button>
             </span>
             <div className="dealer_cards">{dealerDeal}</div>
+            
             <p>Dealer Cards Total: {this.state.dealerHandScore}</p>
             <div className="player_cards">{playerDeal}</div>
 

@@ -1,29 +1,50 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ValidationError from './ValidationError'
+import AuthApiService from './services/auth-api-service'
 
 import "./css/new_account.css";
 import "./css/start.css";
 
 export default class NewAccount extends Component {
-  
-  state = {
-    name: {
-        value: "",
-        touched: false
-    },
-    password: {
-        value: "",
-        touched: false
-    },
-    confirmPassword: {
-        value: "",
-        touched: false
+    state = {
+      user_name: {
+          value: "",
+          touched: false
+      },
+      password: {
+          value: "",
+          touched: false
+      },
+      confirmPassword: {
+          value: "",
+          touched: false
+      },
+      error: null 
     }
-  }
-  checkName(name) {
+  
+    handleSubmitNewUser = ev => {
+      ev.preventDefault()
+      const { user_name, password } = ev.target
+  
+      this.setState({ error: null })
+      AuthApiService.postUser({
+        user_name: user_name.value,
+        password: password.value,
+      })
+        .then(user => {
+          user_name.value = ''
+          password.value = ''
+          this.props.history.push('/login')
+        })
+        .catch(res => {
+          this.setState({ error: res.error })
+        })
+    }
+
+  checkName(user_name) {
     this.setState({
-      name: { value : name, touched: true}
+      user_name: { value : user_name, touched: true}
     })
   }
   checkPassword(password) {
@@ -38,7 +59,7 @@ export default class NewAccount extends Component {
   }
 
   validateName() {
-    const name = this.state.name
+    const name = this.state.user_name
     if(name.value.length < 3 || !name.value.match(/[A-Za-z]/)) {
       return 'Must be valid name'
     }
@@ -68,21 +89,21 @@ export default class NewAccount extends Component {
         <header>
           <h1>BlackJack</h1>
         </header>
-        <form className="newAccount_page_form">
-          <label className="name">Name:</label>
-          {this.state.name.touched && <ValidationError message={nameError} />}
-          <input className="name"name='name'
+        <form className="newAccount_page_form" onSubmit={this.handleSubmitNewUser}>
+          <label className="user_name">Name:</label>
+          {this.state.user_name.touched && <ValidationError message={nameError} />}
+          <input className="name" name='user_name'
           onChange={e => this.checkName(e.target.value)}></input>
           <label className="password">Password:</label>
           {this.state.password.touched && <ValidationError message={passwordError} />}
-          <input className="password" password='password'
+          <input className="password" name='password'
           onChange={e => this.checkPassword(e.target.value)}></input>
           <label className="password">Confirm Password:</label>
           {this.state.confirmPassword.touched && <ValidationError message={confirmPasswordError} />}
           <input className="password" name='confirmPassword'
           onChange={e => this.checkConfirmPassword(e.target.value)}></input>
           <span>
-            <button className="submit_button">Submit</button>
+            <button className="submit_button" >Submit</button>
             <Link to="/">
               <button className="goback_button">Go Back</button>
             </Link>

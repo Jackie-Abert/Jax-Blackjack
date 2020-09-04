@@ -14,8 +14,8 @@ const BlackjackApiService = {
           : res.json()
       )
   },
-  getThing(thingId) {
-    return fetch(`${config.API_ENDPOINT}/things/${thingId}`, {
+  getGame(gameId) {
+    return fetch(`${config.API_ENDPOINT}/game/${gameId}`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
@@ -26,7 +26,7 @@ const BlackjackApiService = {
           : res.json()
       )
   },
-  postGame(thingId, text, rating) {
+  postGame(gameId, bank, wins, losses, moneytotal) {
     return fetch(`${config.API_ENDPOINT}/game`, {
       method: 'POST',
       headers: {
@@ -34,9 +34,11 @@ const BlackjackApiService = {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify({
-        thing_id: thingId,
-        rating,
-        text,
+        game_id: gameId,
+        bank:bank,
+        wins:wins,
+        losses:losses,
+        moneytotal:moneytotal
       }),
     })
       .then(res =>

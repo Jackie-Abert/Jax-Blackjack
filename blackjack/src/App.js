@@ -12,14 +12,11 @@ export default class App extends Component {
     return (
       <div>
         <Switch>
-          <Route path="/newAccount">
-            <NewAccount />
+          <Route component={NewAccount} path="/newAccount">
           </Route>
-          <Route path="/login">
-            <Login />
+          <Route component={Login} path="/login">
           </Route>
-          <Route path="/WelcomeUser">
-            <WelcomeUser />
+          <Route component={WelcomeUser} path="/WelcomeUser">
           </Route>
           <Route path="/game">
             <GamePage />

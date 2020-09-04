@@ -62,7 +62,7 @@ export default class GamePage extends Component {
 
   handleStartGame = () => {
     let newDeck = []; 
-    let emptyCard = [{suit:"cardback", faceValue:'', numValue:0}]
+    let emptyCard = [{suit:"cardback", numberValue:0}]
     newDeck = DeckManager.deckOfCards();
     console.log(newDeck)
     
@@ -71,7 +71,6 @@ export default class GamePage extends Component {
       buttonStayDisabled: false,
       buttonHitDisabled: false,
       gameStarted: true,
-      dealerCountHidden:true
     });
     
     let newPlayerHand = [];
@@ -242,13 +241,20 @@ export default class GamePage extends Component {
 
   //this handles the stay button, runs the ai for dealer and ends the game
   handleStay = () => {
+let newDealerHand = this.state.dealerHand
+let card = this.state.thisdeck.pop()
+console.log(newDealerHand)
+console.log(card)
+newDealerHand.splice(0,1)
+newDealerHand.unshift(card)
+console.log(newDealerHand)
     this.setState(
       {
+        dealerHand:newDealerHand,
         buttonPlayDisabled: false,
         buttonStayDisabled: true,
         buttonHitDisabled: true,
         defaultValue: true,
-        dealerCountHidden:false
       },
       () => this.handleDealer()
     );

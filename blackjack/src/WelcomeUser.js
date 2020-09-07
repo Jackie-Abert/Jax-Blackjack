@@ -3,11 +3,19 @@ import { Link } from "react-router-dom";
 import "./css/start.css";
 import "./css/welcome_user.css";
 import GameItem from "./GameItem";
+import BlackjackApiService from './services/blackjack-api-service'
 
 export default class WelcomeUser extends Component {
+  state = {
+    games:[]
+  }
   
-  
-  
+  componentDidMount() {
+    BlackjackApiService.getGames()
+    .then(res => {
+      this.setState({ games:res.data })
+    })
+  }
   
   render() {
     return (

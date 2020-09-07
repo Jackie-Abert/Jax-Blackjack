@@ -6,18 +6,33 @@ import GameItem from "./GameItem";
 import BlackjackApiService from './services/blackjack-api-service'
 
 export default class WelcomeUser extends Component {
-  state = {
+  constructor() {
+    super();
+  this.state = {
     games:[]
   }
+}
   
   componentDidMount() {
     BlackjackApiService.getGames()
-    .then(res => {
-      this.setState({ games:res.data })
+    .then(data => {
+      console.log(data);
+      this.setState({ 
+        games: data.map((game, index) => (
+          <GameItem
+            array={index}
+            key={game.id}
+            bank={game.bank}
+            wins={game.wins}
+            losses={game.losses}
+            moneytotal={game.moneytotal}
+          />
+        ))
+       })
     })
   }
-  
   render() {
+    console.log(this.state.games)
     return (
       <div className="welcome_user_page">
         <header>
@@ -32,10 +47,7 @@ export default class WelcomeUser extends Component {
           </Link>
         </span>
         <ul>
-          <GameItem />
-          {/* Props go in here */}
-          <GameItem />
-          {/* Props go in here */}
+          {this.state.games}
         </ul>
       </div>
     );

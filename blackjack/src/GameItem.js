@@ -18,16 +18,18 @@ export default class GameItem extends Component {
   }
 
   render() {
+    const { id, array, wins, losses, bank } = this.props
     return (
       <div>
         <button className="game_list_item" onClick={() => this.handleButtonClick()}>
-          <h2>Game 2</h2>
+          
+          <h2>Game {array + 1}</h2>
         </button>
           <div className={this.state.hidden}>
             <ul className="hidden_accordion_list">
-              <li>Games Won: 15/25</li>
-              <li>Total winnings: {this.props.bank}</li>
-              <li>Money in bank: $27,000</li>
+              <li>Total games played: {wins + losses}</li>
+              <li>Wins: {wins} Losses: {losses}</li>
+              <li>Money in bank: {bank}</li>
             </ul>
             <Link to="/game">
               <button className="play_game_button">Play</button>

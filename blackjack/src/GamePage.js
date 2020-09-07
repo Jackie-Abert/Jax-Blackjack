@@ -160,12 +160,6 @@ export default class GamePage extends Component {
   //it is supposed to loop through and deal cards untill player busts
   //or is >= 17, whatever comes first
 
-  // this is where the app breaks. when the player
-  // stays and the dealer doesn't have to draw another
-  // card, the end game message and button do not appear.
-  // they only show up when the screen is resized
-  //it's between this and "end game"
-
   handleDealer = () => {
     let dealerSum = this.check(this.state.dealerHand);
     let newHand = this.state.dealerHand;
@@ -216,12 +210,7 @@ export default class GamePage extends Component {
     );
   };
 }
-  //add to bank
-  //this renders a button to end the game
-  //also throws up an end game message
 
-  ///////this is sometimes not letting message and button not render to the dom
-  /////// without resizing the window, why????????
   endGame = () => {
     let dealer = this.check(this.state.dealerHand);
     console.log(dealer);

@@ -5,16 +5,18 @@ const BlackjackApiService = {
   getGames() {
     return fetch(`${config.API_ENDPOINT}/game`, {
       headers: {
-        'authorization': `basic ${TokenService.getAuthToken()}`,
-      },
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
+        "Content-Type": "application/json"
+      }
     })
-      .then(res =>
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()
+    .then(res =>
+      (!res.ok)
+      ? res.json().then(e => Promise.reject(e))
+      : res.json()
       )
-  },
-  getGame(gameId) {
+      
+    },
+    getGame(gameId) {
     return fetch(`${config.API_ENDPOINT}/game/${gameId}`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,

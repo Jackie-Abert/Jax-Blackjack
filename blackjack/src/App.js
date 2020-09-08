@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import Start from "./Start";
 import Login from "./Login";
-import NewAccount from "./NewAccount";
+import Register from "./Register";
 import GamePage from "./GamePage";
-import WelcomeUser from "./WelcomeUser";
+import Welcome from "./Welcome";
 import DeleteGame from "./DeleteGame";
 
 export default class App extends Component {
@@ -12,17 +12,15 @@ export default class App extends Component {
     return (
       <div>
         <Switch>
-          <Route component={NewAccount} path="/newAccount">
+          <Route component={Register} path="/register">
           </Route>
           <Route component={Login} path="/login">
           </Route>
-          <Route component={WelcomeUser} path="/WelcomeUser">
+          <Route component={Welcome} path="/welcome">
           </Route>
-          <Route path="/game">
-            <GamePage />
+          <Route component={GamePage} path="/game">
           </Route>
-          <Route path="/delete">
-            <DeleteGame />
+          <Route component={DeleteGame} path="/delete">
           </Route>
           <Route path="/">
             <Start />

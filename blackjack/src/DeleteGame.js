@@ -1,34 +1,46 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import ValidationError from './ValidationError'
-import './css/start.css';
+import ValidationError from "./ValidationError";
+import BlackjackApiService from "./services/blackjack-api-service";
+import "./css/start.css";
 import "./css/delete_game.css";
-
-
-
 
 export default class DeleteGame extends Component {
   state = {
     deleteSet: {
-        value: "",
-        touched: false
-    }
-  }
+      value: "",
+      touched: false,
+    },
+  };
+  handleSubmit = (ev) => {
+    ev.preventDefault();
+    console.log(this.props);
+    const id = this.props.id;
+    console.log(id)
+
+    BlackjackApiService.deleteGame(id)
+      .then(() => {
+        this.props.history.push("/welcome");
+      })
+      .catch();
+  };
   confirmDelete(deleteSet) {
     this.setState({
-      deleteSet: { value : deleteSet, touched: true}
-    })
+      deleteSet: { value: deleteSet, touched: true },
+    });
   }
 
   validateDelete() {
-    const deleteSet = this.state.deleteSet
-    if(deleteSet.value !== 'DELETE') {
-      return 'Text must be exact match'
+    const deleteSet = this.state.deleteSet;
+    if (deleteSet.value !== "DELETE") {
+      return "Text must be exact match";
     }
   }
 
   render() {
-    const validateError = this.validateDelete()
+    const validateError = this.validateDelete();
+    const id = this.props.id;
+    console.log(id)
     return (
       <div className="delete_game_warning_page">
         <h1>Delete Game!!!</h1>
@@ -40,24 +52,28 @@ export default class DeleteGame extends Component {
           <label className="delete_label">
             <h2>DELETE to confirm.</h2>
           </label>
-          {this.state.deleteSet.touched && <ValidationError message={validateError} />}
-          <input 
-          className="delete_input" 
-          name='deleteSet' 
-          onChange={e => this.confirmDelete(e.target.value)}></input>
+          {this.state.deleteSet.touched && (
+            <ValidationError message={validateError} />
+          )}
+          <input
+            className="delete_input"
+            name="deleteSet"
+            onChange={(e) => this.confirmDelete(e.target.value)}
+          ></input>
           <span className="button_span">
-            <Link to='/WelcomeUser'><button className="go_back_button" >Go Back</button></Link>
-            
-            <button 
-            className="game_delete_button" 
-            type="submit" 
-            id='#'
-            disabled={
-              this.validateDelete()
-            }
-            >Delete</button>
-            {/* delete button id will equal the id of the game to be deleted. 
-            not sure how I would like to handle this quite yet */}
+            <Link to="/welcome">
+              <button className="go_back_button">Go Back</button>
+            </Link>
+
+            <button
+              onSubmit={this.handleSubmit}
+              className="game_delete_button"
+              type="submit"
+              id="#"
+              disabled={this.validateDelete()}
+            >
+              Delete
+            </button>
           </span>
         </form>
       </div>

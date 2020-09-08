@@ -6,7 +6,7 @@ import AuthApiService from './services/auth-api-service'
 import "./css/new_account.css";
 import "./css/start.css";
 
-export default class NewAccount extends Component {
+export default class Register extends Component {
     state = {
       user_name: {
           value: "",
@@ -81,6 +81,8 @@ export default class NewAccount extends Component {
   
   
   render() {
+
+    let serverError = this.state.error
     const nameError = this.validateName();
     const passwordError = this.validatePassword();
     const confirmPasswordError = this.validateConfirmPassword();
@@ -102,8 +104,15 @@ export default class NewAccount extends Component {
           {this.state.confirmPassword.touched && <ValidationError message={confirmPasswordError} />}
           <input className="password" name='confirmPassword'
           onChange={e => this.checkConfirmPassword(e.target.value)}></input>
+          <h3>{serverError}</h3>
           <span>
-            <button className="submit_button" >Submit</button>
+            <button className="submit_button"
+            disabled={
+              this.validateName() ||
+              this.validatePassword ||
+              this.validateConfirmPassword()
+            } 
+            >Submit</button>
             <Link to="/">
               <button className="goback_button">Go Back</button>
             </Link>

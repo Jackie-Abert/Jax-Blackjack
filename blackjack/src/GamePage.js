@@ -4,6 +4,7 @@ import "./css/start.css";
 import "./css/card_flip.css";
 import "./css/menu_button.css";
 import Card from "./Card";
+import TokenService from "./services/token-service";
 import { Link } from "react-router-dom";
 import DeckManager from "./Content/DeckManager";
 
@@ -33,7 +34,9 @@ export default class GamePage extends Component {
   //this starts the GamePage, renders the deck. need to add a function that
   //adds a new shuffled deck if the old deck gets to a certain number so
   //the game does not break
-
+  handleLogoutClick = () => {
+    TokenService.clearAuthToken()
+  }
   handleStartGame = () => {
     let newDeck = DeckManager.deckOfCards();
     let emptyCard = [{ suit: "cardback", numberValue: 0 }];
@@ -303,7 +306,7 @@ export default class GamePage extends Component {
               <Link to="/WelcomeUser">
                 <button className="main_menu_button">Main Menu</button>
               </Link>
-              <Link to="/login">
+              <Link to="/login" onClick={this.handleLogoutClick}>
                 <button className="logoff_button">Log Off</button>
               </Link>
             </div>

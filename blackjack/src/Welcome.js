@@ -3,16 +3,22 @@ import { Link } from "react-router-dom";
 import "./css/start.css";
 import "./css/welcome_user.css";
 import GameItem from "./GameItem";
+import TokenService from "./services/token-service";
 import BlackjackApiService from './services/blackjack-api-service'
+import NewGameButton from "./Buttons/NewGameButton";
 
-export default class WelcomeUser extends Component {
-  constructor() {
-    super();
+export default class Welcome extends Component {
+  constructor(props) {
+    super(props);
   this.state = {
     games:[]
   }
 }
-  
+
+handleLogoutClick = () => {
+  TokenService.clearAuthToken()
+}
+
   componentDidMount() {
     BlackjackApiService.getGames()
     .then(data => {
@@ -21,7 +27,7 @@ export default class WelcomeUser extends Component {
         games: data.map((game, index) => (
           <GameItem
             array={index}
-            key={game.id}
+            id={game.id}
             bank={game.bank}
             wins={game.wins}
             losses={game.losses}
@@ -39,10 +45,11 @@ export default class WelcomeUser extends Component {
           <h1>BlackJack</h1>
         </header>
         <span className="welcome_user_buttons">
-          <Link to="/game">
-            <button className="new_game_button">New Game</button>
-          </Link>
-          <Link to="/">
+
+            <NewGameButton 
+            {...this.props.id}
+            />
+          <Link to="/" onClick={this.handleLogoutClick}>
             <button className="logoff_button">Log Off</button>
           </Link>
         </span>

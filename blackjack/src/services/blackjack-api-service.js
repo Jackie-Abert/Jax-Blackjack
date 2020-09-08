@@ -4,6 +4,7 @@ import TokenService from './token-service'
 const BlackjackApiService = {
   getGames() {
     return fetch(`${config.API_ENDPOINT}/game`, {
+      method: 'GET',
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
         "Content-Type": "application/json"
@@ -18,6 +19,7 @@ const BlackjackApiService = {
     },
     getGame(gameId) {
     return fetch(`${config.API_ENDPOINT}/game/${gameId}`, {
+      method: 'GET',
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
@@ -28,7 +30,7 @@ const BlackjackApiService = {
           : res.json()
       )
   },
-  postGame(gameId, bank, wins, losses, moneytotal) {
+  postGame() {
     return fetch(`${config.API_ENDPOINT}/game`, {
       method: 'POST',
       headers: {
@@ -36,11 +38,9 @@ const BlackjackApiService = {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify({
-        game_id: gameId,
-        bank:bank,
-        wins:wins,
-        losses:losses,
-        moneytotal:moneytotal
+        bank:500,
+        wins:0,
+        losses:0,
       }),
     })
       .then(res =>
@@ -48,7 +48,31 @@ const BlackjackApiService = {
           ? res.json().then(e => Promise.reject(e))
           : res.json()
       )
-  }
+  },
+
+  deleteGame(gameId) {
+    return fetch(`${config.API_ENDPOINT}/game/${gameId}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
+    }
+    .then(res => {
+      if (!res.ok) {
+        return res.json().then(error => {
+          throw error
+        })
+      }
+      return res.json()
+    })
+    .then(data => {
+      console.log({ data })
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  })
+}
 }
 
 export default BlackjackApiService

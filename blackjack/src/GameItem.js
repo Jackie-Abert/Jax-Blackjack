@@ -18,6 +18,7 @@ export default class GameItem extends Component {
     }
   }
   render() {
+    console.log(this.props)
     const { id, array, wins, losses, bank } = this.props
     return (
       <div className="game_item">
@@ -31,7 +32,7 @@ export default class GameItem extends Component {
               <li>Money in bank: {bank}</li>
             </ul>
             <LoadGameButton {...this.props}/>
-            <Link to='/delete'><button className="game_delete_button" id={id}>Delete</button></Link>
+            <Link to={'/delete/'+id}><button className="game_delete_button" id={id}>Delete</button></Link>
           </div>
       </div>
     );

@@ -15,7 +15,7 @@ export default class DeleteGame extends Component {
   handleSubmit = (ev) => {
     ev.preventDefault();
     console.log(this.props);
-    const id = this.props.id;
+    const id = this.props.match.params.id;
     console.log(id)
 
     BlackjackApiService.deleteGame(id)
@@ -48,7 +48,7 @@ export default class DeleteGame extends Component {
         <h2>your game!!! This action</h2>
         <h2 className="can_not_lettering">CAN NOT</h2>
         <h2>be undone. Please type</h2>
-        <form className="delete_game_form">
+        <form className="delete_game_form" onSubmit={this.handleSubmit}>
           <label className="delete_label">
             <h2>DELETE to confirm.</h2>
           </label>
@@ -66,7 +66,6 @@ export default class DeleteGame extends Component {
             </Link>
 
             <button
-              onSubmit={this.handleSubmit}
               className="game_delete_button"
               type="submit"
               id="#"

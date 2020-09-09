@@ -7,30 +7,48 @@ import Card from "./Card";
 import TokenService from "./services/token-service";
 import { Link } from "react-router-dom";
 import DeckManager from "./Content/DeckManager";
+import BlackjackApiService from './services/blackjack-api-service'
+
 
 export default class GamePage extends Component {
-  state = {
-    wins: 0,
-    losses: 0,
-    monneytotal: 0,
-    bank: 10000,
-    thisdeck: [],
-    playerHandScore: 0,
-    dealerHandScore: 0,
-    playerHand: [],
-    dealerHand: [],
-    bet: 0,
-    pot: 0,
-    buttonPlayDisabled: true,
-    buttonStayDisabled: true,
-    buttonHitDisabled: true,
-    defaultValue: true,
-    endMessage: "",
-    ishidden: "hidden",
-    hiddenRules: "hiddenRules",
-    hiddenMenu: "hiddenMenu",
-    gameStarted: false,
-  };
+componentDidMount(){
+  const id = this.props.match.params.id
+  console.log(id)
+  BlackjackApiService.getGame(id)
+  .then(data => {
+    console.log(data);
+    this.setState({
+      bank:data.bank,
+      wins:data.wins,
+      losses:data.losses
+    })
+    console.log(this.props.bank)
+  })
+}
+state = {
+      wins: 0,
+      losses: 0,
+      monneytotal: 0,
+      bank: 0,
+      thisdeck: [],
+      playerHandScore: 0,
+      dealerHandScore: 0,
+      playerHand: [],
+      dealerHand: [],
+      bet: 0,
+      pot: 0,
+      buttonPlayDisabled: true,
+      buttonStayDisabled: true,
+      buttonHitDisabled: true,
+      defaultValue: true,
+      endMessage: "",
+      ishidden: "hidden",
+      hiddenRules: "hiddenRules",
+      hiddenMenu: "hiddenMenu",
+      gameStarted: false,
+    };
+  
+  
   //this starts the GamePage, renders the deck. need to add a function that
   //adds a new shuffled deck if the old deck gets to a certain number so
   //the game does not break
@@ -247,6 +265,12 @@ export default class GamePage extends Component {
   //this is the button that clears the board and resets the state
 
   handleNewGame = () => {
+    let gameId = this.props.match.params.id
+    const { bank, losses, wins} = this.state
+    console.log(gameId)
+    
+    BlackjackApiService.updateGame(gameId, bank, losses, wins)
+    .then(data => {
     this.setState({
       deck: [],
       playerHandScore: 0,
@@ -262,10 +286,14 @@ export default class GamePage extends Component {
       endMessage: "",
       gameStarted: false,
       ishidden: "hidden",
+    })
     });
   };
   //this works with the dropdown bet menu, needs to add money to the bank
   //not adding properly, not accumulating money to state.
+  //still need to fix the drop down menu!!!!
+  //TALK TO BRANDON ABOUT THE LIBRARY NEEDED FOR THE DROP MENU
+  //TO RESET TO DEFAULT.
   handleChange = (e) => {
     if (e.target.value !== "0") {
       this.setState({
@@ -303,7 +331,7 @@ export default class GamePage extends Component {
               Menu
             </button>
             <div className={this.state.hiddenMenu} id="hidden_menu">
-              <Link to="/WelcomeUser">
+              <Link to="/welcome">
                 <button className="main_menu_button">Main Menu</button>
               </Link>
               <Link to="/login" onClick={this.handleLogoutClick}>

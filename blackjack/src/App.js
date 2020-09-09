@@ -18,9 +18,9 @@ export default class App extends Component {
           </Route>
           <Route component={Welcome} path="/welcome">
           </Route>
-          <Route component={GamePage} path="/game">
+          <Route component={GamePage} path="/game/:id">
           </Route>
-          <Route component={DeleteGame} path="/delete">
+          <Route component={DeleteGame} path="/delete/:id">
           </Route>
           <Route path="/">
             <Start />

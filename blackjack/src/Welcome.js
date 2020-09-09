@@ -32,13 +32,14 @@ handleLogoutClick = () => {
             wins={game.wins}
             losses={game.losses}
             moneytotal={game.moneytotal}
+            history={this.props.history}
           />
         ))
        })
     })
   }
   render() {
-    console.log(this.state.games)
+    console.log(this.props)
     return (
       <div className="welcome_user_page">
         <header>
@@ -47,7 +48,7 @@ handleLogoutClick = () => {
         <span className="welcome_user_buttons">
 
             <NewGameButton 
-            {...this.props.id}
+            {...this.props}
             />
           <Link to="/" onClick={this.handleLogoutClick}>
             <button className="logoff_button">Log Off</button>

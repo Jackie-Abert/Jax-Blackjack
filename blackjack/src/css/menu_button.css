@@ -1,21 +1,23 @@
-.main_menu_button, .logoff_button{
-    border: 1px solid #000000;
-    width: 100px;
-    padding: 10px;
-    margin: 10px;
+.main_menu_button,
+.logoff_button {
+  border: 1px solid #000000;
+  width: 100px;
+  border-radius: 6px;
+  padding: 10px;
+  margin: 10px;
 }
 
 .hiddenMenu {
-    display:none;
+  display: none;
 }
-.showMenu{
-    
+.showMenu {
+  z-index: 1;
 }
+
 .hiddenRules {
-    display:none;
+  display: none;
 }
-.showRules{
-    
+.showRules {
 }
 
 /* className={this.state.hidden}

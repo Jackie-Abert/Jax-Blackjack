@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
 import "./../css/start.css";
 import "./../css/welcome_user.css";
 import BlackjackApiService from "../services/blackjack-api-service";

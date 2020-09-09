@@ -3,6 +3,7 @@ import "./css/game_table.css";
 import "./css/start.css";
 import "./css/card_flip.css";
 import "./css/menu_button.css";
+import './css/game_rules.css'
 import Card from "./Card";
 import TokenService from "./services/token-service";
 import { Link } from "react-router-dom";
@@ -22,7 +23,6 @@ componentDidMount(){
       wins:data.wins,
       losses:data.losses
     })
-    console.log(this.props.bank)
   })
 }
 state = {
@@ -331,12 +331,14 @@ state = {
               Menu
             </button>
             <div className={this.state.hiddenMenu} id="hidden_menu">
+              <div className='testContainer'>
               <Link to="/welcome">
                 <button className="main_menu_button">Main Menu</button>
               </Link>
               <Link to="/login" onClick={this.handleLogoutClick}>
                 <button className="logoff_button">Log Off</button>
               </Link>
+              </div>
             </div>
 
             <h1>BlackJack</h1>

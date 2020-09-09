@@ -12,6 +12,10 @@ h2 {
 .menu_button,
 .game_rules {
   width: 50px;
+  border: transparent;
+  background: transparent;
+  outline:none;
+  font-size: 18px;
   height: 25px;
   margin: 10px;
 }

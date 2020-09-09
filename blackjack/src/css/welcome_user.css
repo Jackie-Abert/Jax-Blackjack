@@ -5,4 +5,8 @@
     margin: 10px;
     border-radius: 6px;
 }
-
+.welcome_user_buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

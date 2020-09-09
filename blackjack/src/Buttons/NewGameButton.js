@@ -22,6 +22,7 @@ export default class NewGameButton extends Component {
     BlackjackApiService.postGame()
       .then(() => {
         console.log(this.props)
+        window.location.reload();
       })
       .catch();
   };

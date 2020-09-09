@@ -2,10 +2,10 @@ h2 {
   margin: auto;
 }
 .game_rules_page {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
   padding: 20px;
-  background:#BFBFBE;
+  background: #bfbfbe;
   z-index: 10;
   min-height: 500px;
   top: 50%;
@@ -15,6 +15,6 @@ h2 {
   text-align: left;
 }
 .close_page_button {
-    align-content: flex-end;
-    width:50px;
+  align-content: flex-end;
+  width: 50px;
 }

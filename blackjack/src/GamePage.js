@@ -408,7 +408,6 @@ state = {
           </span>
         </div>
         <footer className="flex_footer">
-          <span className="bet_pot_container">
             <span className="test_container">
               <span className="test_flex_container">
                 <select
@@ -457,7 +456,6 @@ state = {
                 Stay
               </button>
             </span>
-          </span>
         </footer>
       </div>
     );

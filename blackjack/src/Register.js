@@ -109,7 +109,7 @@ export default class Register extends Component {
             <button className="submit_button"
             disabled={
               this.validateName() ||
-              this.validatePassword ||
+              this.validatePassword() ||
               this.validateConfirmPassword()
             } 
             >Submit</button>

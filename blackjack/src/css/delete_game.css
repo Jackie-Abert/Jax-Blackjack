@@ -27,9 +27,11 @@
 .go_back_button{
     width:100px;
     height: 25px;
+    border-radius: 6px;
     margin:10px 20px;
 }
 .game_delete_button{
+    border-radius: 6px;
     width: 100px;
     height: 25px;
     margin:10px 20px;

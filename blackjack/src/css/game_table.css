@@ -40,8 +40,10 @@ h2 {
 justify-content: center;
 }
 .bet_select {
-  width: 50px;
-  margin: 0 20px;
+  width: 70px;
+
+  /* 
+  margin: 0 20px; */
 }
 .start_button,
 .stay_button {

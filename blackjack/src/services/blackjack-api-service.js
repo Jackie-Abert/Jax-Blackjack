@@ -54,18 +54,8 @@ const BlackjackApiService = {
       }),
     }).then((res) => {
       if (!res.ok) {
-        return res.json().then((error) => {
-          throw error;
-        });
+        return Promise.reject(res)
       }
-      //SyntaxError: Unexpected end of JSON input
-    //at blackjack-api-service.js:62
-    //how do I fix this?????? It doesn't seem to be affecting game play
-    //it is patching to the server just fine.
-      return res.json();
-    })
-    .then((data) => {
-      console.log({ data });
     })
     .catch((error) => {
       console.log(error);

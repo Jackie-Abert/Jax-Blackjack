@@ -19,5 +19,6 @@
 .login_login_button, .goback_button{ 
     width:100px;
     height: 25px;
+    border-radius: 6px;
     margin: 20px 10px;
 }

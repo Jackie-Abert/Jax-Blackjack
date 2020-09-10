@@ -5,48 +5,60 @@ import "./css/card_flip.css";
 import "./css/menu_button.css";
 import './css/game_rules.css'
 import Card from "./Card";
+import Select from 'react-select';
 import TokenService from "./services/token-service";
 import { Link } from "react-router-dom";
 import DeckManager from "./Content/DeckManager";
 import BlackjackApiService from './services/blackjack-api-service'
+import GameOver from './GameOver'
 
 
 export default class GamePage extends Component {
-componentDidMount(){
+  constructor(props){
+    super(props) 
+      this.state = {
+        gameId:0,
+        wins: 0,
+        losses: 0,
+        monneytotal: 0,
+        bank: 0,
+        thisdeck: [],
+        playerHandScore: 0,
+        dealerHandScore: 0,
+        playerHand: [],
+        dealerHand: [],
+        bet: 0,
+        pot: 0,
+        buttonPlayDisabled: true,
+        buttonStayDisabled: true,
+        buttonHitDisabled: true,
+        defaultValue: true,
+        endMessage: "",
+        ishidden: "hidden",
+        hiddenRules: "hiddenRules",
+        hiddenMenu: "hiddenMenu",
+        gameStarted: false,
+        selectedOption: '0',
+      };
+  }
+
+
+
+  componentDidMount(){
   const id = this.props.match.params.id
   console.log(id)
   BlackjackApiService.getGame(id)
   .then(data => {
     console.log(data);
     this.setState({
+      gameId:id,
       bank:data.bank,
       wins:data.wins,
       losses:data.losses
     })
   })
 }
-state = {
-      wins: 0,
-      losses: 0,
-      monneytotal: 0,
-      bank: 0,
-      thisdeck: [],
-      playerHandScore: 0,
-      dealerHandScore: 0,
-      playerHand: [],
-      dealerHand: [],
-      bet: 0,
-      pot: 0,
-      buttonPlayDisabled: true,
-      buttonStayDisabled: true,
-      buttonHitDisabled: true,
-      defaultValue: true,
-      endMessage: "",
-      ishidden: "hidden",
-      hiddenRules: "hiddenRules",
-      hiddenMenu: "hiddenMenu",
-      gameStarted: false,
-    };
+
   
   
   //this starts the GamePage, renders the deck. need to add a function that
@@ -172,9 +184,11 @@ state = {
         bank: newBank,
         pot: this.state.pot + this.state.bet,
         defaultValue: true,
+        selectedOption:0
       },
       () => this.checkPlayer()
     );
+    console.log(this.state.pot)
   };
 
   //this function is supposed to be the ai after the player hits stay
@@ -268,7 +282,7 @@ state = {
     let gameId = this.props.match.params.id
     const { bank, losses, wins} = this.state
     console.log(gameId)
-    
+    //this function is necessary!!!
     BlackjackApiService.updateGame(gameId, bank, losses, wins)
     .then(data => {
     this.setState({
@@ -289,17 +303,15 @@ state = {
     })
     });
   };
-  //this works with the dropdown bet menu, needs to add money to the bank
-  //not adding properly, not accumulating money to state.
-  //still need to fix the drop down menu!!!!
-  //TALK TO BRANDON ABOUT THE LIBRARY NEEDED FOR THE DROP MENU
-  //TO RESET TO DEFAULT.
-  handleChange = (e) => {
-    if (e.target.value !== "0") {
+
+  handleChange = selectedOption => {
+    if (selectedOption.value !== 0) {
       this.setState({
+        selectedOption,
         buttonPlayDisabled: false,
-        bet: Number(e.target.value),
-        pot: Number(e.target.value),
+        bet: Number(selectedOption.value),
+        pot: Number(selectedOption.value),
+
       });
     }
   };
@@ -317,9 +329,28 @@ state = {
       this.setState({ hiddenRules: "hiddenRules" });
     }
   };
+
   render() {
+    const info = this.state
+    const newbank = this.state.bank
+    console.log(info, 'info')
+    if(newbank <= 0) {
+    return (
+      <GameOver 
+      {...info}/>
+      )
+    }
+    const { selectedOption } = this.state;
     const playerDeal = this.state.playerHand.map((card) => <Card {...card} />);
     const dealerDeal = this.state.dealerHand.map((card) => <Card {...card} />);
+    const options =[
+      {value:1, label:'$1'},
+      {value:5, label:'$5'},
+      {value:10, label:'$10'},
+      {value:25, label:'$25'},
+      {value:50, label:'$50'},
+      {value:100, label:'$100'},
+    ]
     return (
       <div>
         <div className="start_page">
@@ -396,7 +427,7 @@ state = {
                 className={this.state.ishidden}
                 onClick={this.handleNewGame}
               >
-                End Game
+                Rematch
               </button>
             </span>
             <div className="dealer_cards">{dealerDeal}</div>
@@ -410,21 +441,11 @@ state = {
         <footer className="flex_footer">
             <span className="test_container">
               <span className="test_flex_container">
-                <select
-                  className="bet_select"
-                  id="bet"
-                  onChange={this.handleChange}
-                >
-                  <option value="0" defaultValue>
-                    Bet
-                  </option>
-                  <option value="1">$1</option>
-                  <option value="5">$5</option>
-                  <option value="10">$10</option>
-                  <option value="25">$25</option>
-                  <option value="50">$50</option>
-                  <option value="100">$100</option>
-                </select>
+                <Select
+                className="bet_select"
+                value={selectedOption}
+                onChange={this.handleChange}
+                options={options}/>
                 <h2>Pot: ${this.state.pot}</h2>
               </span>
               <span className="bank">

@@ -7,7 +7,7 @@ import './css/game_item.css'
 
 export default class GameItem extends Component {
   state = {
-    hidden:'hidden'
+    hidden:'hidden'    
   };
   handleButtonClick = () => {
       console.log('click')
@@ -20,10 +20,11 @@ export default class GameItem extends Component {
   render() {
     console.log(this.props)
     const { id, array, wins, losses, bank } = this.props
+
     return (
       <div className="game_item">
         <button className="game_list_item" onClick={() => this.handleButtonClick()}>
-    <h2>Game {array + 1}</h2>
+    <h2>Game {array + 1} {this.state.gameOver}</h2>
         </button>
           <div className={this.state.hidden}>
             <ul className="hidden_accordion_list">

@@ -10,18 +10,18 @@ export default class GameOver extends Component {
   };
 
   render() {
-    const endGameBank = 0;
+    const bank = 0;
     const { wins, losses, gameId } = this.props;
     const total = wins + losses
-    console.log(gameId, wins, losses, 'id')
-    BlackjackApiService.updateGame(gameId)
-      .then(() => {
-        this.setState = {
+    this.setState = {
           gameid:gameId,
-          bank: endGameBank,
+          bank: bank,
           wins: wins,
           losses: losses,
         };
+    BlackjackApiService.updateGame(gameId, wins, losses, bank)
+      .then(() => {
+        
       })
       .catch();
 

@@ -60,6 +60,15 @@ export default class Login extends Component {
                 Go Back
               </button>
             </Link>
+            <h3>
+              Demo name is 'demo'.
+              </h3>
+              <h3>
+                Demo password is 'password111'.
+              </h3>
+              <h3>
+                Good luck!
+              </h3>
           </span>
         </form>
         <footer></footer>

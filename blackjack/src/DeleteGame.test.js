@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Register from './Register'
+import DeleteGame from './DeleteGame'
 import { BrowserRouter } from 'react-router-dom';
 
-it.only('should render Register page', () => {
+it('should render DeleteGame page', () => {
   const div = document.createElement('div');
   ReactDOM.render(
   <BrowserRouter>
-  <Register />
+  <DeleteGame />
   </BrowserRouter>
   , div);
   ReactDOM.unmountComponentAtNode(div);

@@ -14,9 +14,7 @@ export default class DeleteGame extends Component {
   };
   handleSubmit = (ev) => {
     ev.preventDefault();
-    console.log(this.props);
     const id = this.props.match.params.id;
-    console.log(id)
 
     BlackjackApiService.deleteGame(id)
       .then(() => {
@@ -39,8 +37,6 @@ export default class DeleteGame extends Component {
 
   render() {
     const validateError = this.validateDelete();
-    const id = this.props.id;
-    console.log(id)
     return (
       <div className="delete_game_warning_page">
         <h1>Delete Game!!!</h1>

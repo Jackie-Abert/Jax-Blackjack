@@ -19,8 +19,6 @@ export default class LoadGameButton extends Component {
   handleSubmit = (ev) => {
     ev.preventDefault();
     const id = this.props.id;
-    const game = this.props;
-    console.log(id);
     BlackjackApiService.getGame(id)
       .then(() => {
         this.props.history.push("/game/" + id);

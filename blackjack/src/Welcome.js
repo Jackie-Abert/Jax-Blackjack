@@ -22,11 +22,11 @@ handleLogoutClick = () => {
   componentDidMount() {
     BlackjackApiService.getGames()
     .then(data => {
-      console.log(data);
       this.setState({ 
         games: data.map((game, index) => (
           <GameItem
             array={index}
+            key={game.id}
             id={game.id}
             bank={game.bank}
             wins={game.wins}
@@ -39,7 +39,6 @@ handleLogoutClick = () => {
     })
   }
   render() {
-    console.log(this.props)
     return (
       <div className="welcome_user_page">
         <header>

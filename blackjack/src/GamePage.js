@@ -17,11 +17,13 @@ export default class GamePage extends Component {
   constructor(props){
     super(props) 
       this.state = {
-        gameId:0,
+        isClearable: false,
+        isSearchable: false,
+        gameId:props.match.params.id || '',
         wins: 0,
         losses: 0,
         monneytotal: 0,
-        bank: 0,
+        bank: 500,
         thisdeck: [],
         playerHandScore: 0,
         dealerHandScore: 0,
@@ -46,10 +48,8 @@ export default class GamePage extends Component {
 
   componentDidMount(){
   const id = this.props.match.params.id
-  console.log(id)
   BlackjackApiService.getGame(id)
   .then(data => {
-    console.log(data);
     this.setState({
       gameId:id,
       bank:data.bank,
@@ -69,7 +69,7 @@ export default class GamePage extends Component {
   }
   handleStartGame = () => {
     let newDeck = DeckManager.deckOfCards();
-    let emptyCard = [{ suit: "cardback", numberValue: 0 }];
+    let emptyCard = [{ key:"blank", suit: "cardback", numberValue: 0 }];
 
     this.setState({
       buttonPlayDisabled: true,
@@ -188,7 +188,6 @@ export default class GamePage extends Component {
       },
       () => this.checkPlayer()
     );
-    console.log(this.state.pot)
   };
 
   //this function is supposed to be the ai after the player hits stay
@@ -248,9 +247,7 @@ export default class GamePage extends Component {
 
   endGame = () => {
     let dealer = this.check(this.state.dealerHand);
-    console.log(dealer);
     let player = this.check(this.state.playerHand);
-    console.log(player);
     let newendMessage = "";
     let winnings = this.state.bank;
     let newWin = this.state.wins;
@@ -281,7 +278,6 @@ export default class GamePage extends Component {
   handleNewGame = () => {
     let gameId = this.props.match.params.id
     const { bank, losses, wins} = this.state
-    console.log(gameId)
     //this function is necessary!!!
     BlackjackApiService.updateGame(gameId, bank, losses, wins)
     .then(data => {
@@ -333,7 +329,6 @@ export default class GamePage extends Component {
   render() {
     const info = this.state
     const newbank = this.state.bank
-    console.log(info, 'info')
     if(newbank <= 0) {
     return (
       <GameOver 
@@ -341,16 +336,16 @@ export default class GamePage extends Component {
       )
     }
     const { selectedOption } = this.state;
-    const playerDeal = this.state.playerHand.map((card) => <Card {...card} />);
-    const dealerDeal = this.state.dealerHand.map((card) => <Card {...card} />);
-    const options =[
+    const playerDeal = this.state.playerHand.map((card) => <Card {...card} key={card.key} />);
+    const dealerDeal = this.state.dealerHand.map((card) => <Card {...card} key={card.key} />);
+    const options = [
       {value:1, label:'$1'},
       {value:5, label:'$5'},
       {value:10, label:'$10'},
       {value:25, label:'$25'},
       {value:50, label:'$50'},
       {value:100, label:'$100'},
-    ]
+    ];
     return (
       <div>
         <div className="start_page">
@@ -442,6 +437,10 @@ export default class GamePage extends Component {
             <span className="test_container">
               <span className="test_flex_container">
                 <Select
+                placeholder={"Bet"}
+                isSearchable={false}
+                isClearable={false}
+                tag="Place bet"
                 className="bet_select"
                 value={selectedOption}
                 onChange={this.handleChange}

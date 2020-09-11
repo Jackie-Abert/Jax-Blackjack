@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Register from './Register'
+import App from './App'
 import { BrowserRouter } from 'react-router-dom';
 
-it.only('should render Register page', () => {
+it('should render App page', () => {
   const div = document.createElement('div');
   ReactDOM.render(
   <BrowserRouter>
-  <Register />
+  <App />
   </BrowserRouter>
   , div);
   ReactDOM.unmountComponentAtNode(div);

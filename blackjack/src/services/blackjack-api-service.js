@@ -58,7 +58,6 @@ const BlackjackApiService = {
       }
     })
     .catch((error) => {
-      console.log(error);
     });
   },
 
@@ -79,10 +78,8 @@ const BlackjackApiService = {
         return res.json();
       })
       .then((data) => {
-        console.log({ data });
       })
       .catch((error) => {
-        console.log(error);
       });
   },
 };

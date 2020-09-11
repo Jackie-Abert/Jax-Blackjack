@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Register from './Register'
+import NewGameButton from './NewGameButton'
 import { BrowserRouter } from 'react-router-dom';
 
-it.only('should render Register page', () => {
+it('should render NewGameButton', () => {
   const div = document.createElement('div');
   ReactDOM.render(
   <BrowserRouter>
-  <Register />
+  <NewGameButton />
   </BrowserRouter>
   , div);
   ReactDOM.unmountComponentAtNode(div);

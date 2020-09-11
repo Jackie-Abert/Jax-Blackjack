@@ -40,16 +40,19 @@ h2 {
 justify-content: center;
 }
 .bet_select {
-  width: 70px;
-
-  /* 
-  margin: 0 20px; */
+  width: 80px;
+  top: auto; bottom: 100%;
+  margin: 5px;
 }
 .start_button,
-.stay_button {
+.stay_button,
+.hit_button {
   width: 100px;
-  height: 25px;
+  height: 30px;
   margin: auto;
+  border-radius: 4px;
+  border: 1px solid #bbbbbb
+
 }
 
 .card {
@@ -60,18 +63,8 @@ justify-content: center;
   background-image: url(../Images/cardback.png);
   background-size: contain;
   margin: 10px;
-  border-radius: 6px;
+  border-radius: 4px;
 }
-
-/* .front_of_card {
-    width:100px;
-    height: 150px;
-    border: .5px solid #bbbbbb;
-    box-shadow: 1px 1px 2px #7a7a7a;
-    background: #F9F7F2;
-    margin: 10px;
-    border-radius: 6px;
-} */
 
 .game_table {
   display: flex;
@@ -88,12 +81,6 @@ justify-content: center;
   margin: auto;
 }
 
-.hit_button {
-  width: 100px;
-  height: 25px;
-  margin: auto;
-}
-
 .new_deal_button {
   width: 100px;
   height: 25px;
@@ -107,20 +94,20 @@ justify-content: center;
 }
 .card_face {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-direction: column;
-  width: 100px;
-  height: 150px;
+  max-width: 100px;
+  max-height: 150px;
 }
 .card_back {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-direction: column;
   border: 0.5px solid #bbbbbb;
   box-shadow: 1px 1px 2px #7a7a7a;
   background-image: url(../Images/cardback.png);
   background-size: 100px 150px;
-  border-radius: 6px;
+  border-radius: 4px;
   width: 100px;
   height: 150px;
 }
@@ -143,34 +130,29 @@ justify-content: center;
 .hidden_endgame_message {
   display: flex;
   flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
   top: 50%;
   left: 50%;
-  width: 500px;
-  height: 200px;
-  margin-top: -100px;
-  margin-left: -250px;
-  font-size: 80px;
+  max-width: 300px;
+  margin-top: -290px;
+  margin-left: -150px;
+  font-size: 50px;
   font-weight: 700;
-  color: #000000;
-  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
-    1px 1px 0 #fff;
+  color: #7bc6ff;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
   position: fixed;
   z-index: 10;
 }
 #hidden_endgame_button {
-  max-height: 60px;
-  max-width: 150px;
-  color:#fff;
-  background:#000000;
-  font-size: 23px;
+  height: 40px;
+  width: 100px;
+  color:#000;
+  background:#fff;
+  font-size: 20px;
+  border-radius: 4px;
+  border: 1px solid #bbbbbb;
   margin: auto;
 }
-
-/* @media only screen and (min-width:500px) {
-.play_buttons_span {
-  position: absolute;
-  bottom:0;
-  right:0;
-}
-} */
-

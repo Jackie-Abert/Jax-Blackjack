@@ -25,10 +25,9 @@ export default class Login extends Component {
       })
       .catch((res) => {
         this.setState({ error: res.error });
-        console.log(res.error)
       });
-  };
-  render() {
+    };
+    render() {
     let error = this.state.error
     return (
       <div className="login_page">

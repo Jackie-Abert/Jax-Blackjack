@@ -1,0 +1,68 @@
+# Query: border-radius: 6px;
+# ContextLines: 1
+
+14 results - 8 files
+
+src\css\delete_game.css:
+  29      height: 30px;
+  30:     border-radius: 4px;
+  31      
+
+  34  .game_delete_button{
+  35:     border-radius: 4px;
+  36      width: 100px;
+
+  38      margin:10px 20px;
+  39:     border-radius: 4px;
+  40      border: none;
+
+src\css\game_item.css:
+  11      padding: 20px;
+  12:     border-radius: 4px;
+  13  }
+
+  25      margin:10px 20px;
+  26:     border-radius: 4px;
+  27      border: 1px solid #bbbbbb;
+
+src\css\game_table.css:
+   52    margin: auto;
+   53:   border-radius: 4px;
+   54    border: 1px solid #bbbbbb
+
+   65    margin: 10px;
+   66:   border-radius: 4px;
+   67  }
+
+  109    background-size: 100px 150px;
+  110:   border-radius: 4px;
+  111    width: 100px;
+
+  154    font-size: 20px;
+  155:   border-radius: 4px;
+  156    border: 1px solid #bbbbbb;
+
+src\css\log_in.css:
+  21      height: 30px;
+  22:     border-radius: 4px;
+  23      margin: 20px 10px;
+
+src\css\menu_button.css:
+  4    width: 100px;
+  5:   border-radius: 4px;
+  6    padding: 10px;
+
+src\css\new_account.css:
+  20      height: 30px;
+  21:     border-radius: 4px;
+  22      margin: 20px 10px;
+
+src\css\start.css:
+  27      height: 50px;
+  28:     border-radius: 4px;
+  29      margin: 10px auto;
+
+src\css\welcome_user.css:
+  5      margin: 10px;
+  6:     border-radius: 4px;
+  7  }

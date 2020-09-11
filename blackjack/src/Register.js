@@ -73,7 +73,6 @@ export default class Register extends Component {
   validateConfirmPassword() {
     const password = this.state.password.value
     const confirmPassword = this.state.confirmPassword.value
-    console.log(password, confirmPassword)
     if(confirmPassword !== password) {
       return 'Passwords must match'
     }

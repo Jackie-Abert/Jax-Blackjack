@@ -15,13 +15,12 @@ export default class NewGameButton extends Component {
   
     handleSubmit = (ev) => {
     ev.preventDefault();
-    const id = this.props.id
-    const { bank, wins, losses } = this.state;
-    const game = { id, bank, wins, losses }
+    // const id = this.props.id
+    // const { bank, wins, losses } = this.state;
+    // const game = { bank, wins, losses }
 
     BlackjackApiService.postGame()
       .then(() => {
-        console.log(this.props)
         window.location.reload();
       })
       .catch();

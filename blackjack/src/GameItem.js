@@ -10,7 +10,6 @@ export default class GameItem extends Component {
     hidden:'hidden'    
   };
   handleButtonClick = () => {
-      console.log('click')
       if(this.state.hidden === 'hidden') {
         this.setState({hidden:'show'});
     } else {
@@ -18,7 +17,6 @@ export default class GameItem extends Component {
     }
   }
   render() {
-    console.log(this.props)
     const { id, array, wins, losses, bank } = this.props
 
     return (

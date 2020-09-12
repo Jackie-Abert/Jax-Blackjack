@@ -31,6 +31,6 @@
 ---
 ![Blackjack page](./src/images/userpage.jpg)
 ---
-![Blackjack page](/src/images/deletepage.jpg)
+![Blackjack page](/blackjack/src/images/deletepage.jpg)
 ---
 

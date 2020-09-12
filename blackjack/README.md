@@ -25,12 +25,12 @@
 ---
 ## Preview of the Nifty Interface 
 <br/>
-![Blackjack page]<img src=https://github.com/Jackie-Abert/jax-blackjack/blob/master/blackjack/readmeimages/blackjack.jpg/>
+<img alt="blackjack game page" src=https://github.com/Jackie-Abert/jax-blackjack/blob/master/blackjack/readmeimages/blackjack.jpg/>
 ---
-![Blackjack page](readmeimages/login.jpg)
+<img alt="login page" src=https://github.com/Jackie-Abert/jax-blackjack/blob/master/blackjack/readmeimages/login.jpg/>
 ---
-![Blackjack page](readmeimages/userpage.jpg)
+<img alt="user page" src=https://github.com/Jackie-Abert/jax-blackjack/blob/master/blackjack/readmeimages/user.jpg/>
 ---
-![Blackjack page](readmeimages/deletepage.jpg)
+<img alt="delete game page" src=https://github.com/Jackie-Abert/jax-blackjack/blob/master/blackjack/readmeimages/delete.jpg/>
 ---
 

@@ -23,9 +23,9 @@
 - JSX
 - CSS
 ---
-## Preview of the Nifty Interface
+## Preview of the Nifty Interface 
 <br/>
-![Blackjack page]<img src="./blackjack/readmeimages/blackjack.jpg"?raw=true/>
+![Blackjack page]<img src=https://github.com/Jackie-Abert/jax-blackjack/blob/master/blackjack/readmeimages/blackjack.jpg/>
 ---
 ![Blackjack page](readmeimages/login.jpg)
 ---

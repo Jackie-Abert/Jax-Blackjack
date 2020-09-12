@@ -29,8 +29,8 @@
 ---
 <img alt="login page" src=https://github.com/Jackie-Abert/jax-blackjack/blob/master/blackjack/readmeimages/login.jpg/>
 ---
-<img alt="user page" src=https://github.com/Jackie-Abert/jax-blackjack/blob/master/blackjack/readmeimages/user.jpg/>
+<img alt="user page" src=https://github.com/Jackie-Abert/jax-blackjack/blob/master/blackjack/readmeimages/userpage.jpg/>
 ---
-<img alt="delete game page" src=https://github.com/Jackie-Abert/jax-blackjack/blob/master/blackjack/readmeimages/delete.jpg/>
+<img alt="delete game page" src=https://github.com/Jackie-Abert/jax-blackjack/blob/master/blackjack/readmeimages/deletepage.jpg/>
 ---
 

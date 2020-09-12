@@ -25,7 +25,7 @@
 ---
 ## Preview of the Nifty Interface
 <br/>
-![Blackjack page](blackjack/readmeimages/blackjack.jpg)
+![Blackjack page](/blackjack/readmeimages/blackjack.jpg?raw=true)
 ---
 ![Blackjack page](readmeimages/login.jpg)
 ---

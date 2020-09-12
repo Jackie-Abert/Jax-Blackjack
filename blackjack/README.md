@@ -25,12 +25,12 @@
 ---
 ## Preview of the Nifty Interface
 <br/>
-![Blackjack page](./src/images/blackjack.jpg)
+![Blackjack page](readmeimages/blackjack.jpg)
 ---
-![Blackjack page](./src/images/login.jpg)
+![Blackjack page](readmeimages/login.jpg)
 ---
-![Blackjack page](./src/images/userpage.jpg)
+![Blackjack page](readmeimages/userpage.jpg)
 ---
-![Blackjack page](./src/images/deletepage.jpg)
+![Blackjack page](readmeimages/deletepage.jpg)
 ---
 

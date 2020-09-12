@@ -61,7 +61,7 @@ export default class Register extends Component {
   validateName() {
     const name = this.state.user_name
     if(name.value.length < 3 || !name.value.match(/[A-Za-z]/)) {
-      return 'Must be valid name'
+      return 'Must be at least three letters long'
     }
   }
   validatePassword() {
